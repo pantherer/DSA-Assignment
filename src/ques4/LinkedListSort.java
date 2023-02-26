@@ -1,13 +1,12 @@
+package ques4;
 
 public class LinkedListSort {
     node head;
     node sorted;
     int totalCount;
-
     class node {
         int data;
         node next;
-
         public node(int data) {
             this.data = data;
         }
@@ -15,10 +14,7 @@ public class LinkedListSort {
 
     void push(int data) {
         node newnode = new node(data);
-
         newnode.next = head;
-
-
         head = newnode;
     }
 
@@ -26,13 +22,9 @@ public class LinkedListSort {
     void insertionSort(node headref) {
         sorted = null;
         node current = headref;
-
-
         while (current != null) {
             node next = current.next;
-
             sortedInsert(current);
-
             current = next;
         }
 
@@ -51,8 +43,6 @@ public class LinkedListSort {
 
         } else {
             node current = sorted;
-
-
             while (current.next != null &&
                     current.next.data < newnode.data) {
                 current = current.next;

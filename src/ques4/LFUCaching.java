@@ -1,6 +1,7 @@
+package ques4;
+
 import java.util.HashMap;
 import java.util.Map;
-import java.util.PriorityQueue;
 
 class Pair {
     int value, frequency;
@@ -59,7 +60,7 @@ class LFU {
         }
     }
 
-    // Function to find the LFU block
+    // Function to find the ques4.LFU block
     public int findLFU()
     {
         int lfuKey = 0;

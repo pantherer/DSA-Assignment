@@ -1,4 +1,4 @@
-//b)
+package ques1;//b)
 //        Assume you were hired to create an application for an ISP, and there is n number of network devices, such as routers,
 //        that are linked together to provides internet access to home user users. You are given a 2D array that represents network
 //        connections between these network devices such that a[i]=[xi,yi] where xi is connected to yi device.  Suppose there is a
@@ -13,25 +13,7 @@
 //        Output (Impacted Device List) = {5,7}
 //        Explanation: power failure on network device 4 will disconnect 5 and 7 from internet
 
-//import java.util.Scanner;
-//
-//public class Cable {
-//    public static void cable(int graph[][],int failNode){
-//
-//    }
-//
-//    public static void main(String[] args) {
-//        Cable c = new Cable();
-//        int graph[][] = new int[][] {{0,1}, {0,2}, {1,3}, {1,6}, {2,4}, {4,6}, {4,5}, {5,7}};
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("enter the power failure node");
-//        int failNode=sc.nextInt();
-//        cable(graph,failNode);
-//    }
-//
-//}
 
-// Adjascency List representation in Java
 
 import java.util.*;
 
@@ -41,12 +23,7 @@ class Graph {
         am.get(s).add(d);
         am.get(d).add(s);
     }
-//    static void removeEdge(ArrayList<ArrayList<Integer>> am,int s,int d){
-//        am.get(s).remove(d);
-//        System.out.println("removed node "+s);
-//        am.get(d).remove(s);
-//        System.out.println("removed node "+d);
-//    }
+
 
     static void removeEdge(ArrayList<ArrayList<Integer>> am, int s, int d) {
         if (am.get(s).contains(d)) {
@@ -59,13 +36,7 @@ class Graph {
         }
     }
 
-//    private static void printDisconnectedNodes(ArrayList<ArrayList<Integer>> am, int disconnectedNode) {
-//        for(int i=0;i<am.get(disconnectedNode).size();i++){
-//            System.out.println("-->"+am.get(disconnectedNode).get(i));
-//            System.out.println("removing the link between these nodes");
-//            removeEdge(am,disconnectedNode,am.get(disconnectedNode).get(i));
-//        }
-//    }
+
 
     private static void printDisconnectedNodes(ArrayList<ArrayList<Integer>> am, int disconnectedNode) {
         for (int i = am.get(disconnectedNode).size() - 1; i >= 0; i--) {

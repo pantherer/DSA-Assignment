@@ -1,5 +1,5 @@
 //
-//public class Main {
+//public class ques7.Main {
 //
 //    int[][] serviceCenters;
 //    int capacity;
@@ -10,7 +10,7 @@
 //    int prevDistance;
 //    int nextServiceDistance;
 //
-//    Main(int[][] serviceCenters){
+//    ques7.Main(int[][] serviceCenters){
 //        this.serviceCenters=serviceCenters;
 //        this.capacity=10;
 //        this.distanceTravelled=0;
@@ -73,6 +73,6 @@
 //
 //    public static void main(String[] args) {
 //        int[][] arr={{10,60},{20,30},{30,30},{60,40}};
-//        new Main(arr);
+//        new ques7.Main(arr);
 //    }
 //}

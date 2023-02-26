@@ -1,8 +1,8 @@
-//import java.util.ArrayList;
+package ques1;//import java.util.ArrayList;
 //import java.util.Arrays;
 //import java.util.List;
 //
-//public class TrainRoutes {
+//public class ques1.TrainRoutes {
 //    static class Edge {
 //        int x;
 //        int y;

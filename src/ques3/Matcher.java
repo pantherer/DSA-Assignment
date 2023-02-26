@@ -1,3 +1,5 @@
+package ques3;
+
 public class Matcher {
     public static void check(String word, String pattern) {
         int l = word.length();

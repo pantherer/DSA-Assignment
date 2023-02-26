@@ -1,3 +1,5 @@
+package ques8;
+
 public class MissingEvenNumber {
     MissingEvenNumber(int[] a,int k,int n){
         int count=a[n-1]/2+1;
