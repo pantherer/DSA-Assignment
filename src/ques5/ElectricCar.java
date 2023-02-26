@@ -28,7 +28,7 @@ public class ElectricCar {
                     }
                     System.out.println("previous distance is === "+prevDistance);
 
-                    if(i!=4) {
+                    if(i!=capacityDistance.length-1) {
                         nextDistance = capacityDistance[i + 1][j];
 //                        System.out.println("next distance "+nextDistance);
                     }
