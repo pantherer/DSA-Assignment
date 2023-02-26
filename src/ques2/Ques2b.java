@@ -1,65 +1,61 @@
 package ques2;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
-import java.util.PriorityQueue;
 
-class Ques2b {
-    public List<List<Integer>> getSkyline(int[][] buildings) {
-        List<List<Integer>> res=new ArrayList<>();
+public class Ques2b {
+    private int[] parents;
+    private int[] depth;
+    private List<Integer>[] children;
+    private int[] subtreeSize;
+    private int[] serviceCenters;
+    private int n;
 
-        List<int[]> heights=new ArrayList<>();
-
-        transformBuilding(buildings,heights);
-
-        //if heights of 2 points are same then place the point with smaller height first else place point with smaller starting point
-
-        Collections.sort(heights,(a, b)->(a[0]==b[0]) ? a[1]-b[1] : a[0]-b[0]);// TC->O(nlog n)
-
-        PriorityQueue<Integer> pq=new PriorityQueue<Integer>((a, b)->(b-a));
-
-        //seeding the Priority Queue
-        pq.add(0);
-        int prevMax=0;
-
-        for(int[] height:heights){ //O(n)
-
-            if(height[1]<0){
-                pq.add(-height[1]);
-            }
-            else{
-                pq.remove(height[1]); //O(log n)
-            }
-
-            int CurrentMax=pq.peek();
-            if(CurrentMax!=prevMax)
-            {
-                List<Integer> subResult=new ArrayList<>();
-                subResult.add(height[0]);
-                subResult.add(CurrentMax);
-
-                res.add(subResult);
-                prevMax=CurrentMax;
-            }
-        }
-
-        return res;
-    }
-    //this will seperate the values of start point and end point with height
-    //example-->[1,2,3]-->[1,-3] & [2,3]-->here -(minus) is just for convention for starting point
-    private void transformBuilding(int[][] buildings,List<int[]> heights)
-    {
-        for(int[] building:buildings)
-        {
-            heights.add(new int[]{building[0],-building[2]});
-            heights.add(new int[]{building[1],building[2]});
-        }
-
-
-
+    public int minimumServiceCenters(int n, List<Integer>[] children) {
+        this.n = n;
+        this.children = children;
+        parents = new int[n];
+        depth = new int[n];
+        subtreeSize = new int[n];
+        serviceCenters = new int[n];
+        Arrays.fill(parents, -1);
+        Arrays.fill(serviceCenters, -1);
+        dfs1(0, -1);
+        return dfs2(0, -1);
     }
 
+    private void dfs1(int node, int parent) {
+        parents[node] = parent;
+        depth[node] = parent == -1 ? 0 : depth[parent] + 1;
+        subtreeSize[node] = 1;
+        for (int child : children[node]) {
+            dfs1(child, node);
+            subtreeSize[node] += subtreeSize[child];
+        }
+    }
 
+    private int dfs2(int node, int parent) {
+        if (serviceCenters[node] != -1) return serviceCenters[node];
+        int count = 0;
+        for (int child : children[node]) {
+            count += dfs2(child, node);
+        }
+        int option1 = count;
+        int option2 = n - subtreeSize[node];
+        serviceCenters[node] = Math.min(option1, option2) + 1;
+        return serviceCenters[node];
+    }
 
+    public static void main(String[] args) {
+        List<Integer>[] children = new List[5];
+        for (int i = 0; i < 5; i++) {
+            children[i] = new ArrayList<>();
+        }
+        children[0].add(1);
+        children[0].add(2);
+        children[0].add(3);
+        Ques2b sc = new Ques2b();
+        System.out.println(sc.minimumServiceCenters(5, children));
+    }
 }
